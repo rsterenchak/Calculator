@@ -1,0 +1,1 @@
+"This is a project created based on requirements by 'The Odin Project' website. This is essentially a grid-creator where you can draw with your mouse. The grid can be reset and defined by the user up to a 64x64 size grid."# calculator
