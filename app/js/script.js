@@ -1,76 +1,100 @@
-let rows = prompt("How many rows and columns would you like in your grid?" + '\n' + "MAX ROWS & COLUMNS is 64."); // rows and cols need to be set via user prompt
-let cols = rows;
+function add (a, b) {
+	return (a + b);
+}
+
+function subtract (a, b) {
+	return (a - b);
+}
+
+function divide (a, b) {
+	return (a / b);
+}
 
 
-const topButton = document.getElementById('topButton');
-const container = document.getElementById('container');
-container.style.backgroundColor = 'white';
+function multiply(a, b) {
 
-var btn = document.createElement("BUTTON");
-topButton.appendChild(btn).className = "button-top";
-btn.innerText = "CLEAR GRID";
+return (a * b);
 
-btn.addEventListener('click', function(){
+}
 
-    location.reload();
+
+/** OPERATE function takes an operator to determine the appropriate function to be applied to numbers (a & b) and returns result of said operation */
+function operate(operator, a, b){
+
+let result;
+
+
+    if(operator == '+'){
+
+        result = add(a, b);
+
+    }
+
+    if(operator == '-'){
+
+        result = subtract(a, b);
+
+    }
+
+    if(operator == '/'){
+
+        result = divide(a, b);
+
+    }
+
+    if(operator == '*'){
+
+        result = multiply(a, b);
+
+    }
+
+    return result;
+
+} // Ends OPERATE function - function() works
+
+
+let displayValue = 0;
+
+document.querySelector('.digit0').addEventListener("click", function(){
+
+
+    displayValue = 9;
+
+
 });
 
-
-function repeatBox(rows, cols){
-    container.style.setProperty('--grid-rows', rows);
-    container.style.setProperty('--grid-cols', cols);
-    let boxHeight = (300/(cols));
-
-    for(let i = 0; i < (rows * cols); i++){
-        
-
-        cell = document.createElement("div");
-        cell.innerText = "";
-        container.appendChild(cell).className = "grid-items";
-        
-        cell.style.setProperty('min-height', (boxHeight + "px"));
-    }
-    
+document.querySelector('#display').innerHTML = displayValue;
 
 
-} //ends function
 
-if(rows <= 64){
 
-repeatBox(rows, cols);
-addListener(rows, cols);
 
-}
 
-else{
 
-    location.reload();
+// let test = operate('*', 8, 8);
+// console.log(test);
 
-}
-function addListener(rows, cols){
 
-    let cells = document.getElementsByClassName("grid-items");
+// function multiply (total) {
+	
+// 	let i = 1;
+// 	let result = total[0];
 
-    for(let i = 0; i < (rows * cols); i++){
-    
-        let gridCell = cells[i].addEventListener("mouseover", func, false);
-        // let gridOut = cells[i].addEventListener("mouseout", func1, false);
+// 	while(i < (total.length)){
 
-        function func(){
+// 		result= result * total[i];
 
-            cells[i].style.backgroundColor = 'red';
-    
-        }
-    
-        function func1(){
+// 		i++;
 
-            cells[i].style.backgroundColor = 'white';
-    
-        }
-    }
+// 	}
 
-    
-} //Ends addListener function
+// 	return result;
+// }
+
+
+
+
+
 
 
 
