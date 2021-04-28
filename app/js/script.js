@@ -74,35 +74,70 @@ document.querySelector('.digit0').addEventListener("click", function(){
 
     displayValue = 9;
 
-        if(currentArray.length < 1){ // IF, ELSE STATEMENTS NOT WORKING CORRECTLY 
+        if(currentArray.length < 1){ // determines 'a' value
+
+            currentArray = [];
+            currentArray.push(displayValue);
+            let newArray = currentArray;//define new array
+            newArray.toString();
+            displayValue = parseInt(newArray);
+
+            console.log('a: ' + displayValue);
+        } 
+
+        else if((currentArray.length >= 1) && (currentArray.length < 10) && (operator == '')){ // allows for up to 10 digit calculation
 
             currentArray.push(displayValue);
-            currentArray.toString();
-            displayValue = parseInt(currentArray);
 
-        } // **FIX**
+            newArray = currentArray;
+            newArray = newArray.join(); // converts to string
+            newArray = newArray.replaceAll(',','');// remove commas in string
 
-        else{
+            newArray = Number(newArray);
 
-            currentArray.push(displayValue);
-
-            currentArray.toString();
+            displayValue = newArray;
             
-            displayValue = parseInt(currentArray);
+            a = newArray;
 
-
-        } // **FIX**
-
-        if(a > 0){
             
+
+        } // this 'array updater' needs to be defined outside of this listener function
+
+        if((operator != '') && (b == 0)){ // FIX IT, enter and exit conditions
+            
+            currentArray = [];
             b = displayValue;
+            currentArray.push(displayValue);
 
+            let newArray = currentArray;//define new array
+            newArray.toString();
+
+            displayValue = parseInt(newArray);
+
+            console.log('b: ' + displayValue);
         }
+
+        else if((currentArray.length >= 1) && (currentArray.length < 10) && (operator != '')){
+
+            currentArray.push(displayValue);
+
+            newArray = currentArray;
+            newArray = newArray.join(); // converts to string
+            newArray = newArray.replaceAll(',','');// remove commas in string
+
+            newArray = Number(newArray);
+
+            displayValue = newArray;
+            
+            b = newArray;
+
+        } // need 'else if' conditional to keep track of array
+
 
     document.querySelector('#display').innerHTML = displayValue;
 
 
-});
+});// Ends '9' digit button listener function
 
 document.querySelector('.digit1').addEventListener("click", function(){
 
@@ -304,7 +339,7 @@ document.querySelector('.operation6').addEventListener("click", function(){
     result = operate(operator, a, b);// call appropriate operation function
     
     a = result;
-    displayValue = a;
+    displayValue = result;
 
     document.querySelector('#display').innerHTML = result; //display result on display
 

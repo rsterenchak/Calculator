@@ -61,6 +61,8 @@ div button{
     border-radius: 8px 8px 8px 8px;
     font-size: 35px;
 
+    overflow: hidden;
+
     height: 30px;
 
 
