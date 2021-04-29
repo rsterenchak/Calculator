@@ -60,6 +60,9 @@ let displayValue = a; // 0
 let operator = '';
 let currentArray = [];
 
+let innerResult = 0; // intermediate result before pressing equals key, for run on operations
+let currentResult = 0; // stores current result based on innerResult
+
 document.querySelector('#display').innerHTML = displayValue;
 
 
@@ -68,13 +71,11 @@ document.querySelector('#display').innerHTML = displayValue;
 
 document.querySelector('.digit0').addEventListener("click", function(){
 
-        // take array 
-        // append digit value to the next index in the array
-
 
     displayValue = 9;
 
-        if(currentArray.length < 1){ // determines 'a' value
+
+        if((currentArray.length < 1) && (operator == '')){ // determines 'a' value
 
             currentArray = [];
             currentArray.push(displayValue);
@@ -99,27 +100,33 @@ document.querySelector('.digit0').addEventListener("click", function(){
             
             a = newArray;
 
-            
+            console.log('currentArray for a: ' + currentArray); // array check
 
         } // this 'array updater' needs to be defined outside of this listener function
 
-        if((operator != '') && (b == 0)){ // FIX IT, enter and exit conditions
+        if((operator != '') && (currentArray.length < 1)){
             
             currentArray = [];
             b = displayValue;
             currentArray.push(displayValue);
 
-            let newArray = currentArray;//define new array
+            let newArray = currentArray;
             newArray.toString();
 
             displayValue = parseInt(newArray);
 
             console.log('b: ' + displayValue);
+
+
+            innerResult = operate(operator, displayValue, b); // stores current result
+            currentResult = operate(operator, innerResult, b);
+            console.log('innerResult if:' + innerResult); // array check
         }
 
         else if((currentArray.length >= 1) && (currentArray.length < 10) && (operator != '')){
-
+            
             currentArray.push(displayValue);
+
 
             newArray = currentArray;
             newArray = newArray.join(); // converts to string
@@ -131,7 +138,12 @@ document.querySelector('.digit0').addEventListener("click", function(){
             
             b = newArray;
 
-        } // need 'else if' conditional to keep track of array
+
+            innerResult = operate(operator, displayValue, b); // stores current result
+            currentResult = operate(operator, innerResult, b);
+            console.log('innerResult else if:' + innerResult); // array check
+        }
+
 
 
     document.querySelector('#display').innerHTML = displayValue;
@@ -319,6 +331,7 @@ document.querySelector('.operation1').addEventListener("click", function(){
     a = displayValue;
     operator = '-';
 
+    currentArray = []; // Clears Array when operation is defined by user
 
 });
 
@@ -329,6 +342,8 @@ document.querySelector('.operation2').addEventListener("click", function(){
     a = displayValue;
     operator = '+';
 
+    currentArray = []; // Clears Array when operation is defined by user
+
 
 });
 
@@ -338,8 +353,14 @@ document.querySelector('.operation6').addEventListener("click", function(){
 
     result = operate(operator, a, b);// call appropriate operation function
     
-    a = result;
+    a = 0;
+    currentArray = [];
+    operator = '';
+
+
     displayValue = result;
+
+    
 
     document.querySelector('#display').innerHTML = result; //display result on display
 
@@ -347,39 +368,8 @@ document.querySelector('.operation6').addEventListener("click", function(){
 
 
 
-// first, first define displayValue 
-// second, store operand to be used and previous displayValue as 'a'
-// third, second displayValue = b
-// press equals to take a, b, and operand to complete operation according to the type of operand chosen
 
-
-
-
-// let test = operate('*', 8, 8);
-// console.log(test);
-
-
-// function multiply (total) {
-	
-// 	let i = 1;
-// 	let result = total[0];
-
-// 	while(i < (total.length)){
-
-// 		result= result * total[i];
-
-// 		i++;
-
-// 	}
-
-// 	return result;
-// }
-
-
-
-
-
-
+// fix code so that after every (a + b) operation this 'result' exists so that you can continue to run operations if necessary
 
 
 
