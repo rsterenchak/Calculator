@@ -63,6 +63,8 @@ let currentArray = [];
 let innerResult = 0; // intermediate result before pressing equals key, for run on operations
 let currentResult = 0; // stores current result based on innerResult
 
+let resultShows = false;
+
 document.querySelector('#display').innerHTML = displayValue;
 
 
@@ -71,7 +73,13 @@ document.querySelector('#display').innerHTML = displayValue;
 
 document.querySelector('.digit0').addEventListener("click", function(){
 
+    if(resultShows == true){
 
+        innerResult = 0; // Clears all previous innerResult calculations after EQUALS Button is pressed
+
+    }
+
+    resultShows = false; // helps to ensure after new digit continuing operations can occur
     displayValue = 9;
 
 
@@ -79,32 +87,31 @@ document.querySelector('.digit0').addEventListener("click", function(){
 
             currentArray = [];
             currentArray.push(displayValue);
-            let newArray = currentArray;//define new array
+            let newArray = currentArray;
             newArray.toString();
-            displayValue = parseInt(newArray);
+            displayValue = parseInt(newArray); //displays & translates digit input to number value
 
             console.log('a: ' + displayValue);
         } 
 
-        else if((currentArray.length >= 1) && (currentArray.length < 10) && (operator == '')){ // allows for up to 10 digit calculation
+        else if((currentArray.length >= 1) && (currentArray.length < 10) && (operator == '')){ // allows for up to 10 digit numbers
 
             currentArray.push(displayValue);
 
             newArray = currentArray;
-            newArray = newArray.join(); // converts to string
-            newArray = newArray.replaceAll(',','');// remove commas in string
+            newArray = newArray.join();
+            newArray = newArray.replaceAll(',','');
+            newArray = Number(newArray); //translates digit input to number value
 
-            newArray = Number(newArray);
+            displayValue = newArray;  //changes current displayed value
 
-            displayValue = newArray;
-            
             a = newArray;
 
-            console.log('currentArray for a: ' + currentArray); // array check
+            innerResult = operate(operator, a, b); // stores current result
 
-        } // this 'array updater' needs to be defined outside of this listener function
+        }
 
-        if((operator != '') && (currentArray.length < 1)){
+        if((operator != '') && (currentArray.length < 1)){ // determines 'b' value
             
             currentArray = [];
             b = displayValue;
@@ -112,44 +119,40 @@ document.querySelector('.digit0').addEventListener("click", function(){
 
             let newArray = currentArray;
             newArray.toString();
+            displayValue = parseInt(newArray); //displays & translates digit input to number value
 
-            displayValue = parseInt(newArray);
-
+            innerResult = operate(operator, a, b); // stores current result
+            
             console.log('b: ' + displayValue);
+            console.log('a value: ' + a);
+            console.log('b value: ' + b);
 
-
-            innerResult = operate(operator, displayValue, b); // stores current result
-            currentResult = operate(operator, innerResult, b);
-            console.log('innerResult if:' + innerResult); // array check
         }
 
-        else if((currentArray.length >= 1) && (currentArray.length < 10) && (operator != '')){
+        else if((currentArray.length >= 1) && (currentArray.length < 10) && (operator != '')){ // allows for up to 10 digit numbers
             
             currentArray.push(displayValue);
 
-
             newArray = currentArray;
-            newArray = newArray.join(); // converts to string
-            newArray = newArray.replaceAll(',','');// remove commas in string
+            newArray = newArray.join();
+            newArray = newArray.replaceAll(',','');
+            newArray = Number(newArray); //translates digit input to number value
 
-            newArray = Number(newArray);
-
-            displayValue = newArray;
+            displayValue = newArray; //changes current displayed value
             
             b = newArray;
 
+            innerResult = operate(operator, a, b); // stores current result
 
-            innerResult = operate(operator, displayValue, b); // stores current result
-            currentResult = operate(operator, innerResult, b);
-            console.log('innerResult else if:' + innerResult); // array check
+            console.log('a value: ' + a);
+            console.log('b value: ' + b);
+
         }
-
-
 
     document.querySelector('#display').innerHTML = displayValue;
 
-
 });// Ends '9' digit button listener function
+
 
 document.querySelector('.digit1').addEventListener("click", function(){
 
@@ -299,6 +302,11 @@ document.querySelector('.operation5').addEventListener("click", function(){
 
     displayValue = 0;
 
+    a = 0;
+    b = 0;
+    currentArray = [];
+    operator = '';
+
     document.querySelector('#display').innerHTML = displayValue;
 
 
@@ -340,29 +348,54 @@ document.querySelector('.operation2').addEventListener("click", function(){
 
 
     a = displayValue;
-    operator = '+';
+    console.log('Add Button a: ' + a);
+
+    b = 0; 
+    console.log('Add Button b: ' + b);
+
+    if(resultShows == true){
+
+        operator = '+'; 
+        innerResult = operate(operator, a, b); // stores current result
+
+        a = result;
+    
+    }
+
+    resultShows = false;
+    operator = '+'; 
+
+    if(innerResult > 0){
+       
+        a = innerResult;
+        console.log('a = ' + innerResult);
+    }
 
     currentArray = []; // Clears Array when operation is defined by user
-
 
 });
 
 
-/** Calls function and calculates operation based on values */
+/** EQUALS BUTTON LISTENER */
 document.querySelector('.operation6').addEventListener("click", function(){
 
-    result = operate(operator, a, b);// call appropriate operation function
+    /** RESETS ALL DIGIT INPUT */
+    if(resultShows == false){
+        result = operate(operator, a, b);// call appropriate operation function
+        a = 0;
+        currentArray = [];
+        operator = '';
+    }
+
+
+    resultShows = true;// Allows EQUALS BUTTON to be clicked multiple times in a row
     
-    a = 0;
-    currentArray = [];
-    operator = '';
-
-
     displayValue = result;
-
-    
-
     document.querySelector('#display').innerHTML = result; //display result on display
+
+    // console.log('a value: ' + a);
+    // console.log('b value: ' + b);
+    console.log('RESULT: '+ result );
 
 });
 
