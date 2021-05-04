@@ -1,3 +1,4 @@
+/** MATH FUNCTIONS */
 function add (a, b) {
 	return (a + b);
 }
@@ -7,6 +8,19 @@ function subtract (a, b) {
 }
 
 function divide (a, b) {
+
+    if(b == 0){
+
+        return 0;
+
+    }
+
+    if((a == 0) && (b == 0)){
+
+        return 0;
+
+    }
+
 	return (a / b).toFixed(9);
 }
 
@@ -870,6 +884,7 @@ document.querySelector('.digit9').addEventListener("click", function(){
 
         }
 
+
     document.querySelector('#display').innerHTML = displayValue;
 
 }); // Ends '0' digit button listener function
@@ -899,10 +914,10 @@ document.querySelector('.operation4').addEventListener("click", function(){
 
 
     a = displayValue;
-    console.log('Add Button a: ' + a);
+    console.log('Divide Button a: ' + a);
 
     b = 0; 
-    console.log('Add Button b: ' + b);
+    console.log('Divide Button b: ' + b);
 
     if(resultShows == true){
 
@@ -930,10 +945,10 @@ document.querySelector('.operation3').addEventListener("click", function(){
 
 
     a = displayValue;
-    console.log('Add Button a: ' + a);
+    console.log('Multiply Button a: ' + a);
 
     b = 0; 
-    console.log('Add Button b: ' + b);
+    console.log('Multiply Button b: ' + b);
 
     if(resultShows == true){
 
@@ -962,10 +977,10 @@ document.querySelector('.operation1').addEventListener("click", function(){
 
 
     a = displayValue;
-    console.log('Add Button a: ' + a);
+    console.log('Subtract Button a: ' + a);
 
     b = 0; 
-    console.log('Add Button b: ' + b);
+    console.log('Subtract Button b: ' + b);
 
     if(resultShows == true){
 
@@ -1043,9 +1058,6 @@ document.querySelector('.operation6').addEventListener("click", function(){
 });
 
 
-
-
-// fix code so that after every (a + b) operation this 'result' exists so that you can continue to run operations if necessary
 
 
 
