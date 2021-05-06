@@ -96,6 +96,8 @@ document.querySelector('.digit0').addEventListener("click", function(){
     resultShows = false; // helps to ensure after new digit continuing operations can occur
     displayValue = 9;
 
+        /** START FUNCTION */
+
         if((currentArray.length < 1) && (operator == '')){ // determines 'a' value
 
             currentArray = [];
@@ -107,7 +109,7 @@ document.querySelector('.digit0').addEventListener("click", function(){
             console.log('a: ' + displayValue);
         } 
 
-        else if((currentArray.length >= 1) && (currentArray.length < 10) && (operator == '')){ // allows for up to 10 digit numbers
+        else if((currentArray.length >= 1) && (currentArray.length < 9) && (operator == '')){ // allows for up to 10 digit numbers
 
             currentArray.push(displayValue);
 
@@ -142,7 +144,7 @@ document.querySelector('.digit0').addEventListener("click", function(){
 
         }
 
-        else if((currentArray.length >= 1) && (currentArray.length < 10) && (operator != '')){ // allows for up to 10 digit numbers
+        else if((currentArray.length >= 1) && (currentArray.length < 9) && (operator != '')){ // allows for up to 10 digit numbers
             
             currentArray.push(displayValue);
 
@@ -160,6 +162,8 @@ document.querySelector('.digit0').addEventListener("click", function(){
             console.log('b: ' + displayValue);
 
         }
+
+        /** END FUNCTION */
 
     document.querySelector('#display').innerHTML = displayValue;
 
@@ -188,7 +192,7 @@ document.querySelector('.digit1').addEventListener("click", function(){
             console.log('a: ' + displayValue);
         } 
 
-        else if((currentArray.length >= 1) && (currentArray.length < 10) && (operator == '')){ // allows for up to 10 digit numbers
+        else if((currentArray.length >= 1) && (currentArray.length < 9) && (operator == '')){ // allows for up to 10 digit numbers
 
             currentArray.push(displayValue);
 
@@ -223,7 +227,7 @@ document.querySelector('.digit1').addEventListener("click", function(){
 
         }
 
-        else if((currentArray.length >= 1) && (currentArray.length < 10) && (operator != '')){ // allows for up to 10 digit numbers
+        else if((currentArray.length >= 1) && (currentArray.length < 9) && (operator != '')){ // allows for up to 10 digit numbers
             
             currentArray.push(displayValue);
 
@@ -269,7 +273,7 @@ document.querySelector('.digit2').addEventListener("click", function(){
             console.log('a: ' + displayValue);
         } 
 
-        else if((currentArray.length >= 1) && (currentArray.length < 10) && (operator == '')){ // allows for up to 10 digit numbers
+        else if((currentArray.length >= 1) && (currentArray.length < 9) && (operator == '')){ // allows for up to 10 digit numbers
 
             currentArray.push(displayValue);
 
@@ -304,7 +308,7 @@ document.querySelector('.digit2').addEventListener("click", function(){
 
         }
 
-        else if((currentArray.length >= 1) && (currentArray.length < 10) && (operator != '')){ // allows for up to 10 digit numbers
+        else if((currentArray.length >= 1) && (currentArray.length < 9) && (operator != '')){ // allows for up to 10 digit numbers
             
             currentArray.push(displayValue);
 
@@ -350,7 +354,7 @@ document.querySelector('.digit3').addEventListener("click", function(){
             console.log('a: ' + displayValue);
         } 
 
-        else if((currentArray.length >= 1) && (currentArray.length < 10) && (operator == '')){ // allows for up to 10 digit numbers
+        else if((currentArray.length >= 1) && (currentArray.length < 9) && (operator == '')){ // allows for up to 10 digit numbers
 
             currentArray.push(displayValue);
 
@@ -385,7 +389,7 @@ document.querySelector('.digit3').addEventListener("click", function(){
 
         }
 
-        else if((currentArray.length >= 1) && (currentArray.length < 10) && (operator != '')){ // allows for up to 10 digit numbers
+        else if((currentArray.length >= 1) && (currentArray.length < 9) && (operator != '')){ // allows for up to 10 digit numbers
             
             currentArray.push(displayValue);
 
@@ -430,7 +434,7 @@ document.querySelector('.digit4').addEventListener("click", function(){
             console.log('a: ' + displayValue);
         } 
 
-        else if((currentArray.length >= 1) && (currentArray.length < 10) && (operator == '')){ // allows for up to 10 digit numbers
+        else if((currentArray.length >= 1) && (currentArray.length < 9) && (operator == '')){ // allows for up to 10 digit numbers
 
             currentArray.push(displayValue);
 
@@ -465,7 +469,7 @@ document.querySelector('.digit4').addEventListener("click", function(){
 
         }
 
-        else if((currentArray.length >= 1) && (currentArray.length < 10) && (operator != '')){ // allows for up to 10 digit numbers
+        else if((currentArray.length >= 1) && (currentArray.length < 9) && (operator != '')){ // allows for up to 10 digit numbers
             
             currentArray.push(displayValue);
 
@@ -510,7 +514,7 @@ document.querySelector('.digit5').addEventListener("click", function(){
             console.log('a: ' + displayValue);
         } 
 
-        else if((currentArray.length >= 1) && (currentArray.length < 10) && (operator == '')){ // allows for up to 10 digit numbers
+        else if((currentArray.length >= 1) && (currentArray.length < 9) && (operator == '')){ // allows for up to 10 digit numbers
 
             currentArray.push(displayValue);
 
@@ -545,7 +549,7 @@ document.querySelector('.digit5').addEventListener("click", function(){
 
         }
 
-        else if((currentArray.length >= 1) && (currentArray.length < 10) && (operator != '')){ // allows for up to 10 digit numbers
+        else if((currentArray.length >= 1) && (currentArray.length < 9) && (operator != '')){ // allows for up to 10 digit numbers
             
             currentArray.push(displayValue);
 
@@ -590,7 +594,7 @@ document.querySelector('.digit6').addEventListener("click", function(){
             console.log('a: ' + displayValue);
         } 
 
-        else if((currentArray.length >= 1) && (currentArray.length < 10) && (operator == '')){ // allows for up to 10 digit numbers
+        else if((currentArray.length >= 1) && (currentArray.length < 9) && (operator == '')){ // allows for up to 10 digit numbers
 
             currentArray.push(displayValue);
 
@@ -625,7 +629,7 @@ document.querySelector('.digit6').addEventListener("click", function(){
 
         }
 
-        else if((currentArray.length >= 1) && (currentArray.length < 10) && (operator != '')){ // allows for up to 10 digit numbers
+        else if((currentArray.length >= 1) && (currentArray.length < 9) && (operator != '')){ // allows for up to 10 digit numbers
             
             currentArray.push(displayValue);
 
@@ -670,7 +674,7 @@ document.querySelector('.digit7').addEventListener("click", function(){
             console.log('a: ' + displayValue);
         } 
 
-        else if((currentArray.length >= 1) && (currentArray.length < 10) && (operator == '')){ // allows for up to 10 digit numbers
+        else if((currentArray.length >= 1) && (currentArray.length < 9) && (operator == '')){ // allows for up to 10 digit numbers
 
             currentArray.push(displayValue);
 
@@ -705,7 +709,7 @@ document.querySelector('.digit7').addEventListener("click", function(){
 
         }
 
-        else if((currentArray.length >= 1) && (currentArray.length < 10) && (operator != '')){ // allows for up to 10 digit numbers
+        else if((currentArray.length >= 1) && (currentArray.length < 9) && (operator != '')){ // allows for up to 10 digit numbers
             
             currentArray.push(displayValue);
 
@@ -750,7 +754,7 @@ document.querySelector('.digit8').addEventListener("click", function(){
             console.log('a: ' + displayValue);
         } 
 
-        else if((currentArray.length >= 1) && (currentArray.length < 10) && (operator == '')){ // allows for up to 10 digit numbers
+        else if((currentArray.length >= 1) && (currentArray.length < 9) && (operator == '')){ // allows for up to 10 digit numbers
 
             currentArray.push(displayValue);
 
@@ -785,7 +789,7 @@ document.querySelector('.digit8').addEventListener("click", function(){
 
         }
 
-        else if((currentArray.length >= 1) && (currentArray.length < 10) && (operator != '')){ // allows for up to 10 digit numbers
+        else if((currentArray.length >= 1) && (currentArray.length < 9) && (operator != '')){ // allows for up to 10 digit numbers
             
             currentArray.push(displayValue);
 
@@ -830,7 +834,7 @@ document.querySelector('.digit9').addEventListener("click", function(){
             console.log('a: ' + displayValue);
         } 
 
-        else if((currentArray.length >= 1) && (currentArray.length < 10) && (operator == '')){ // allows for up to 10 digit numbers
+        else if((currentArray.length >= 1) && (currentArray.length < 9) && (operator == '')){ // allows for up to 10 digit numbers
 
             currentArray.push(displayValue);
 
@@ -865,7 +869,7 @@ document.querySelector('.digit9').addEventListener("click", function(){
 
         }
 
-        else if((currentArray.length >= 1) && (currentArray.length < 10) && (operator != '')){ // allows for up to 10 digit numbers
+        else if((currentArray.length >= 1) && (currentArray.length < 9) && (operator != '')){ // allows for up to 10 digit numbers
             
             currentArray.push(displayValue);
 
