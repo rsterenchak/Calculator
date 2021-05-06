@@ -82,7 +82,6 @@ let resultShows = false;
 document.querySelector('#display').innerHTML = displayValue;
 
 
-
 /** DIGIT BUTTON LISTENERS */
 
 document.querySelector('.digit0').addEventListener("click", function(){
@@ -96,74 +95,9 @@ document.querySelector('.digit0').addEventListener("click", function(){
     resultShows = false; // helps to ensure after new digit continuing operations can occur
     displayValue = 9;
 
-        /** START FUNCTION */
 
-        if((currentArray.length < 1) && (operator == '')){ // determines 'a' value
+    digitIterate(displayValue, operator); // iterates through currentArray for a and b digit input
 
-            currentArray = [];
-            currentArray.push(displayValue);
-            let newArray = currentArray;
-            newArray.toString();
-            displayValue = parseInt(newArray); //displays & translates digit input to number value
-
-            console.log('a: ' + displayValue);
-        } 
-
-        else if((currentArray.length >= 1) && (currentArray.length < 9) && (operator == '')){ // allows for up to 10 digit numbers
-
-            currentArray.push(displayValue);
-
-            newArray = currentArray;
-            newArray = newArray.join();
-            newArray = newArray.replaceAll(',','');
-            newArray = Number(newArray); //translates digit input to number value
-
-            displayValue = newArray;  //changes current displayed value
-
-            a = newArray;
-
-            innerResult = operate(operator, a, b); // stores current result
-
-            console.log('a: ' + displayValue);
-
-        }
-
-        if((operator != '') && (currentArray.length < 1)){ // determines 'b' value
-            
-            currentArray = [];
-            b = displayValue;
-            currentArray.push(displayValue);
-
-            let newArray = currentArray;
-            newArray.toString();
-            displayValue = parseInt(newArray); //displays & translates digit input to number value
-
-            innerResult = operate(operator, a, b); // stores current result
-            
-            console.log('b: ' + displayValue);
-
-        }
-
-        else if((currentArray.length >= 1) && (currentArray.length < 9) && (operator != '')){ // allows for up to 10 digit numbers
-            
-            currentArray.push(displayValue);
-
-            newArray = currentArray;
-            newArray = newArray.join();
-            newArray = newArray.replaceAll(',','');
-            newArray = Number(newArray); //translates digit input to number value
-
-            displayValue = newArray; //changes current displayed value
-            
-            b = newArray;
-
-            innerResult = operate(operator, a, b); // stores current result
-
-            console.log('b: ' + displayValue);
-
-        }
-
-        /** END FUNCTION */
 
     document.querySelector('#display').innerHTML = displayValue;
 
@@ -893,6 +827,81 @@ document.querySelector('.digit9').addEventListener("click", function(){
 
 }); // Ends '0' digit button listener function
 
+
+
+
+function digitIterate (displayValue, operator){
+
+    if((currentArray.length < 1) && (operator == '')){ // determines 'a' value
+
+        currentArray = [];
+        currentArray.push(displayValue);
+        let newArray = currentArray;
+        newArray.toString();
+        displayValue = parseInt(newArray); //displays & translates digit input to number value
+
+        console.log('a: ' + displayValue);
+        console.log(currentArray);
+
+        
+    } 
+
+    else if((currentArray.length >= 1) && (currentArray.length < 9) && (operator == '')){ // allows for up to 10 digit numbers
+
+        currentArray.push(displayValue);
+        console.log(currentArray);
+
+        newArray = currentArray;
+        newArray = newArray.join();
+        newArray = newArray.replaceAll(',','');
+        newArray = Number(newArray); //translates digit input to number value
+
+        displayValue = newArray;  //changes current displayed value
+
+        a = newArray;
+
+        innerResult = operate(operator, a, b); // stores current result
+
+        console.log('a: ' + displayValue);
+
+    }
+
+    if((operator != '') && (currentArray.length < 1)){ // determines 'b' value
+        
+        currentArray = [];
+        b = displayValue;
+        currentArray.push(displayValue);
+
+        let newArray = currentArray;
+        newArray.toString();
+        displayValue = parseInt(newArray); //displays & translates digit input to number value
+
+        innerResult = operate(operator, a, b); // stores current result
+        
+        console.log('b: ' + displayValue);
+
+    }
+
+    else if((currentArray.length >= 1) && (currentArray.length < 9) && (operator != '')){ // allows for up to 10 digit numbers
+        
+        currentArray.push(displayValue);
+
+        newArray = currentArray;
+        newArray = newArray.join();
+        newArray = newArray.replaceAll(',','');
+        newArray = Number(newArray); //translates digit input to number value
+
+        displayValue = newArray; //changes current displayed value
+        
+        b = newArray;
+
+        innerResult = operate(operator, a, b); // stores current result
+
+        console.log('b: ' + displayValue);
+
+    }
+
+} // Ends function call
 
 
 /** OPERAND BUTTON LISTENERS */
